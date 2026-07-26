@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pivoines</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f6f6f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+button{
+    background:#ff4f95;
+    color:white;
+    border:none;
+    padding:20px 40px;
+    border-radius:15px;
+    font-size:24px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    justify-content:center;
+    align-items:center;
+}
+
+#popup img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:20px;
+    box-shadow:0 0 30px white;
+}
+
+#fermer{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:45px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button onclick="ouvrirImage()">🌸 Clique ici 🌸</button>
+
+<div id="popup">
+
+<span id="fermer" onclick="fermerImage()">✖</span>
+
+<img src="pivoines.jpg" alt="Pivoines">
+
+</div>
+
+<script>
+
+function ouvrirImage(){
+    document.getElementById("popup").style.display="flex";
+}
+
+function fermerImage(){
+    document.getElementById("popup").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
