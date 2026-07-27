@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise !</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Fond rose très doux */
+            color: #4a4a4a;
+        }
 
-<title>Pivoines</title>
+        /* Bouton stylisé */
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #d81b60; /* Rose pivoine */
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
 
-<style>
+        .btn:hover {
+            background-color: #c2185b;
+            transform: scale(1.05);
+        }
 
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f6f6f6;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
+        /* Conteneur de l'image (masqué par défaut) */
+        #image-container {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            max-width: 90%;
+            text-align: center;
+        }
 
-button{
-    background:#ff4f95;
-    color:white;
-    border:none;
-    padding:20px 40px;
-    border-radius:15px;
-    font-size:24px;
-    cursor:pointer;
-    transition:.3s;
-}
+        /* Image des pivoines */
+        #image-container img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
 
-button:hover{
-    transform:scale(1.05);
-}
-
-#popup{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    justify-content:center;
-    align-items:center;
-}
-
-#popup img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:20px;
-    box-shadow:0 0 30px white;
-}
-
-#fermer{
-    position:absolute;
-    top:20px;
-    right:30px;
-    color:white;
-    font-size:45px;
-    cursor:pointer;
-}
-
-</style>
-
+        /* Classe ajoutée en JavaScript pour afficher l'image */
+        #image-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-
 <body>
 
-<button onclick="ouvrirImage()">🌸 Clique ici 🌸</button>
+    <!-- Bouton principal -->
+    <button class="btn" id="surpriseBtn">Clique ici ✨</button>
 
-<div id="popup">
+    <!-- Zone d'affichage de l'image -->
+    <div id="image-container">
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1000&auto=format&fit=crop" alt="Bouquet de pivoines">
+    </div>
 
-<span id="fermer" onclick="fermerImage()">✖</span>
+    <!-- Script JavaScript pour l'interaction -->
+    <script>
+        const button = document.getElementById('surpriseBtn');
+        const imageContainer = document.getElementById('image-container');
 
-<img src="pivoines.jpg" alt="Pivoines">
-
-</div>
-
-<script>
-
-function ouvrirImage(){
-    document.getElementById("popup").style.display="flex";
-}
-
-function fermerImage(){
-    document.getElementById("popup").style.display="none";
-}
-
-</script>
+        button.addEventListener('click', () => {
+            // Affiche l'image avec une douce animation
+            imageContainer.classList.add('visible');
+            
+            // Facultatif : masque ou change le texte du bouton après le clic
+            button.textContent = "Voici tes pivoines ! 🌸";
+            button.style.cursor = "default";
+        });
+    </script>
 
 </body>
 </html>
